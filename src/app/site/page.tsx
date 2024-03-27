@@ -14,11 +14,11 @@ import Link from 'next/link'
 
 export default function Home () {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col p-3 md:p-10'>
       <section className='h-full w-full md:pt-44 mt-[-70px] relative flex items-center justify-center flex-col'>
         <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#161616_1px,transparent_1px),linear-gradient(to_bottom,#161616_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]' />
 
-        <p className='text-slate-300 translate-y-3'>
+        <p className='relative text-muted-foreground mt-20 md:mt-0'>
           Everything you need to run your agency, in one place
         </p>
         <div
@@ -32,6 +32,7 @@ export default function Home () {
         md:mt-[-70px]'
         >
           <Image
+            priority
             src={'/assets/preview.png'}
             alt='banner image'
             height={1200}
@@ -50,7 +51,7 @@ export default function Home () {
             <Card
               key={card.title}
               className={`w-[300px] h-[350px] flex flex-col justify-between bg-slate-300  ${
-                card.title === 'Unlimited Saas' && 'border-2 border-red-700'
+                card.title === 'Unlimited Saas' && 'border-2 border-orange-700'
               }`}
             >
               <CardHeader>
@@ -78,8 +79,10 @@ export default function Home () {
                 </div>
                 <Link
                   href={`/agency?plan=${card.priceId}`}
-                  className={`w-full text-center p-2 rounded-sm bg-muted-foreground/10 ${
-                    card.title === 'Unlimited Saas' && 'bg-indigo-500'
+                  className={`w-full text-center p-2 rounded-sm  ${
+                    card.title === 'Unlimited Saas'
+                      ? 'bg-blue-600'
+                      : 'bg-muted-foreground/10'
                   }`}
                 >
                   Get Started
